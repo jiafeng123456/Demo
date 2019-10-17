@@ -1,6 +1,4 @@
-package com.example.time.controller;
-
-import java.util.HashMap;
+package com.example.time.leetcode;
 
 /*
  *@author jiafeng

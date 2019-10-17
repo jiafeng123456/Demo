@@ -1,4 +1,4 @@
-package com.example.time;
+package com.example.time.Utils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -7,7 +7,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
+/* 将时间段 按自然周 自然月分割时间区间
+ * @Description
+ * @author jiafeng
+ * @date 2019/10/17 0017
+ */
 public class TimeDateUtils {
 
     public static final String YYYYMMDD = "yyyy-MM-dd";

@@ -1,4 +1,4 @@
-package com.example.time.test;
+package com.example.time.leetcode;
 
 import java.util.ArrayList;
 import java.util.List;

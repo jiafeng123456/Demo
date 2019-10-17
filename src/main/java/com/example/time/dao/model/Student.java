@@ -1,4 +1,4 @@
-package com.example.time.Utils;
+package com.example.time.dao.model;
 
 /*
  *@description:

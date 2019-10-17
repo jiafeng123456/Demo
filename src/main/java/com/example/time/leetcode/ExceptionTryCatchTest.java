@@ -1,4 +1,4 @@
-package com.example.time.controller;
+package com.example.time.leetcode;
 
 import java.io.IOException;
 

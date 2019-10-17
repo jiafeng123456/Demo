@@ -1,8 +1,6 @@
-package com.example.time;
+package com.example.time.leetcode;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-/*
+/* n皇后
  *@author jiafeng
  *@date 2019/8/8 0008 14:30
  */
