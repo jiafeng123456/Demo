@@ -35,7 +35,7 @@ public class WiggleMaxLength {
             }
         }
         int m = n.size();
-        for (int i = 0 ; i < n.size();i++){
+        for (int i = 0 ; i < n.size()-1;i++){
             if (n.get(i)==n.get(i+1)){
                 m--;
             }

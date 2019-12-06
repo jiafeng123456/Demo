@@ -18,7 +18,7 @@ public class Redpackage {
         }
 
         BigDecimal random = BigDecimal.valueOf(Math.random());
-        BigDecimal min   = BigDecimal.valueOf(0.01);
+        BigDecimal min   = BigDecimal.valueOf(1);
 
         BigDecimal halfRemainSize = BigDecimal.valueOf(_redPackage.remainSize).divide(new BigDecimal(2), BigDecimal.ROUND_UP);
         BigDecimal max1 = _redPackage.remainMoney.divide(halfRemainSize, BigDecimal.ROUND_DOWN);
@@ -33,11 +33,30 @@ public class Redpackage {
     }
 
     public static void main(String[] args) {
+        BigDecimal min = new BigDecimal("1");
+        BigDecimal redpack_left_money = new BigDecimal("12");
+        Integer size = 14;
+        RedPackage redPackage = new RedPackage();
+        for (int i = 0 ; i < 14 ; i++){
+            redPackage.remainSize= size;
+            redPackage.remainMoney = redpack_left_money;
+            BigDecimal  money = new BigDecimal("0");
+            //红包为随机金额时 ，通过 奖品库存，与剩余金额 随机计算红包金额大小
+            if (redpack_left_money.compareTo(min) == -1){
+                System.out.println("钱不够");
+            }else {
+                money = getRandomMoney(redPackage);
+                System.out.println(money);
+            }
+            redpack_left_money = redpack_left_money.subtract(money);
+            size = size-1;
+        }
 
-            RedPackage moneyPackage = new RedPackage();
-            moneyPackage.remainMoney = BigDecimal.valueOf(100);
-            moneyPackage.remainSize = 100;
-            System.out.print(getRandomMoney(moneyPackage)  + "   ");
+
+//            RedPackage moneyPackage = new RedPackage();
+//            moneyPackage.remainMoney = BigDecimal.valueOf(120);
+//            moneyPackage.remainSize = 100;
+//            System.out.print(getRandomMoney(moneyPackage)  + "   ");
 
     }
 
