@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 public class Redpack {
     public static void main(String[] args) {
         Integer remainSize = 100;
+        BigDecimal re = new BigDecimal(90);
+        System.out.println(getRandomMoney(remainSize,re).getRemainMoney());
     }
 
     public static RedPackage  getRandomMoney(int remainSize, BigDecimal remainMoney) {

@@ -1,0 +1,5 @@
+1.判断时间是否重叠
+if(end_time_log >= effective_start_time_log && start_time_log <= effective_end_time_log){
+	check = false;
+    break;
+}

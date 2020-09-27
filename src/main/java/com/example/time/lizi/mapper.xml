@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cairh.operation.coupons.provider.dao.CouponMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cairh.operation.coupons.model.Coupon">
+        <id column="coupon_id" property="coupon_id" />
+        <result column="coupon_type" property="coupon_type" />
+        <result column="coupon_name" property="coupon_name" />
+        <result column="coupon_title" property="coupon_title" />
+        <result column="coupon_color" property="coupon_color" />
+        <result column="coupon_service_phone" property="coupon_service_phone" />
+        <result column="coupon_notice" property="coupon_notice" />
+        <result column="coupon_description" property="coupon_description" />
+        <result column="coupon_cost" property="coupon_cost" />
+        <result column="prime_cost" property="prime_cost" />
+        <result column="least_cost" property="least_cost" />
+        <result column="reduce_cost" property="reduce_cost" />
+        <result column="discount" property="discount" />
+        <result column="coupon_status" property="coupon_status" />
+        <result column="date_info" property="date_info" />
+        <result column="can_gift" property="can_gift" />
+        <result column="can_share" property="can_share" />
+        <result column="can_use_with_other" property="can_use_with_other" />
+        <result column="get_limit" property="get_limit" />
+        <result column="use_limit" property="use_limit" />
+        <result column="center_title" property="center_title" />
+        <result column="center_subtitle" property="center_subtitle" />
+        <result column="center_url" property="center_url" />
+        <result column="icon_url" property="icon_url" />
+        <result column="icon_abstract" property="icon_abstract" />
+        <result column="text_image_list" property="text_image_list" />
+        <result column="custom_name" property="custom_name" />
+        <result column="custom_subname" property="custom_subname" />
+        <result column="custom_url" property="custom_url" />
+        <result column="total_quantity" property="total_quantity" />
+        <result column="onhand_quantity" property="onhand_quantity" />
+        <result column="use_quantity" property="use_quantity" />
+        <result column="extsystem_id" property="extsystem_id" />
+        <result column="activity_id" property="activity_id" />
+        <result column="create_by" property="create_by" />
+        <result column="create_datetime" property="create_datetime" />
+        <result column="update_by" property="update_by" />
+        <result column="update_datetime" property="update_datetime" />
+        <result column="template_id" property="template_id" />
+    </resultMap>
+
+    <resultMap id="CpNoticeResultMap" type="com.cairh.operation.coupons.vo.CouponnoticeVO">
+        <id column="coupon_id" property="coupon_id" />
+        <result column="coupon_status" property="coupon_status" />
+        <result column="coupon_name" property="coupon_name" />
+        <result column="template_id" property="template_id" />
+        <collection property="noticeList" column="{template_id=template_id, notice_type=notice_type}" ofType="map" select="queryList">
+            <result column="id" property="id" />
+            <result column="template_id" property="template_id" />
+            <result column="notice_type" property="notice_type" />
+            <result column="notice_channel" property="notice_channel" />
+            <result column="duration" property="duration" />
+            <result column="template_text" property="template_text" />
+        </collection>
+    </resultMap>
+
+    <resultMap id="noticeParamMap" type="com.cairh.operation.coupons.model.Cpnoticeparam">
+        <result column="id" property="id" />
+        <result column="template_id" property="template_id" />
+        <result column="notice_type" property="notice_type" />
+        <result column="notice_channel" property="notice_channel" />
+        <result column="duration" property="duration" />
+        <result column="template_text" property="template_text" />
+        <result column="status" property="status" />
+    </resultMap>
+    <!-- 通用查询映射结果 -->
+    <resultMap id="CouponResultMap" type="com.cairh.operation.coupons.model.Coupon">
+        <id column="coupon_id" property="coupon_id" />
+        <result column="coupon_type" property="coupon_type" />
+        <result column="coupon_name" property="coupon_name" />
+        <result column="coupon_title" property="coupon_title" />
+        <result column="coupon_color" property="coupon_color" />
+        <result column="coupon_service_phone" property="coupon_service_phone" />
+        <result column="coupon_notice" property="coupon_notice" />
+        <result column="coupon_description" property="coupon_description" />
+        <result column="coupon_cost" property="coupon_cost" />
+        <result column="prime_cost" property="prime_cost" />
+        <result column="least_cost" property="least_cost" />
+        <result column="reduce_cost" property="reduce_cost" />
+        <result column="discount" property="discount" />
+        <result column="coupon_status" property="coupon_status" />
+        <result column="date_info" property="date_info" />
+        <result column="can_gift" property="can_gift" />
+        <result column="can_share" property="can_share" />
+        <result column="can_use_with_other" property="can_use_with_other" />
+        <result column="get_limit" property="get_limit" />
+        <result column="use_limit" property="use_limit" />
+        <result column="center_title" property="center_title" />
+        <result column="center_subtitle" property="center_subtitle" />
+        <result column="center_url" property="center_url" />
+        <result column="icon_url" property="icon_url" />
+        <result column="icon_abstract" property="icon_abstract" />
+        <result column="text_image_list" property="text_image_list" />
+        <result column="custom_name" property="custom_name" />
+        <result column="custom_subname" property="custom_subname" />
+        <result column="custom_url" property="custom_url" />
+        <result column="total_quantity" property="total_quantity" />
+        <result column="onhand_quantity" property="onhand_quantity" />
+        <result column="use_quantity" property="use_quantity" />
+        <result column="extsystem_id" property="extsystem_id" />
+        <result column="create_by" property="create_by" />
+        <result column="activity_id" property="activity_id" />
+        <result column="create_datetime" property="create_datetime" />
+        <result column="update_by" property="update_by" />
+        <result column="update_datetime" property="update_datetime" />
+        <result column="operator_name" property="operator_name" />
+        <result column="product_name" property="product_name" />
+        <result column="product_code" property="product_code" />
+        <result column="activity_name" property="activity_name" />
+        <!--         <collection property="cpruleList" ofType="com.cairh.operation.coupons.model.Cprule"> -->
+        <!--         	<id column="serial_no" property="serial_no" /> -->
+        <!--         	<result column="coupon_id" property="coupon_id" /> -->
+        <!--         	<result column="extsystem_id" property="extsystem_id" /> -->
+        <!--         	<result column="attribute_code" property="attribute_code" /> -->
+        <!--         	<result column="en_attribute_value" property="en_attribute_value" /> -->
+        <!--         	<result column="calculate_formula" property="calculate_formula" /> -->
+        <!--         </collection> -->
+    </resultMap>
+
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="commonColumns">
+        coupon_id, coupon_type, coupon_title, coupon_name, coupon_color, coupon_service_phone, coupon_notice, coupon_description, coupon_cost, prime_cost, least_cost, reduce_cost, discount, coupon_status, date_info, can_gift, can_share, can_use_with_other, get_limit, use_limit, center_title, center_subtitle,
+        center_url, icon_url, icon_abstract, text_image_list, custom_name, custom_subname, custom_url,
+        total_quantity, onhand_quantity, use_quantity, create_by, create_datetime, update_by, update_datetime, extsystem_id,activity_id
+    </sql>
+
+    <sql id="couponColumns" databaseId="mysql">
+        cp.coupon_id, cp.coupon_type, cp.coupon_title, cp.coupon_name, cp.coupon_color, cp.coupon_service_phone, cp.coupon_notice, cp.coupon_description, cp.coupon_cost,cp.limit_tag,cp.limit_type,
+        cp.prime_cost, cp.least_cost, cp.reduce_cost, cp.discount, cp.coupon_status, cp.date_info, cp.can_gift, cp.can_share, cp.can_use_with_other,
+        cp.get_limit, cp.use_limit, cp.center_title, cp.center_subtitle,
+        cp.center_url, cp.icon_url, cp.icon_abstract, cp.text_image_list, cp.custom_name, cp.custom_subname, cp.custom_url,
+        cp.total_quantity, cp.onhand_quantity, cp.use_quantity, cp.create_by, cp.create_datetime, cp.update_by, cp.update_datetime, cp.extsystem_id,cp.activity_id
+    </sql>
+
+    <sql id="couponColumns" databaseId="oracle">
+        cp.coupon_id, cp.coupon_type, cp.coupon_title, cp.coupon_name, cp.coupon_color, cp.coupon_service_phone, cp.coupon_notice, cp.coupon_description, cp.coupon_cost,cp.limit_tag,cp.limit_type,
+        cp.prime_cost, cp.least_cost, cp.reduce_cost,TO_CHAR(cp.discount,'fm99999990.0') AS discount, cp.coupon_status, cp.date_info, cp.can_gift, cp.can_share, cp.can_use_with_other,
+        cp.get_limit, cp.use_limit, cp.center_title, cp.center_subtitle,
+        cp.center_url, cp.icon_url, cp.icon_abstract, cp.text_image_list, cp.custom_name, cp.custom_subname, cp.custom_url,
+        cp.total_quantity, cp.onhand_quantity, cp.use_quantity, cp.create_by, cp.create_datetime, cp.update_by, cp.update_datetime, cp.extsystem_id,cp.activity_id
+    </sql>
+
+    <select id="jugelizi" resultType="com.cairh.operation.coupons.vo.CouponVO" databaseId="mysql">
+        xxxxxxxxxxxx
+    </select>
+
+    <select id="queryCouponListPage" resultMap="CouponResultMap" databaseId="oracle">
+        select <include refid="couponColumns"/>,b.attribute_code,b.product_name,b.en_attribute_values,
+        case cp.coupon_status
+        when '8' then '1'
+        when '1' then '2'
+        when '3' then '3'
+        when '2' then '4'
+        when '9' then '5'
+        else '6' end as temp_status,cpa.ACTIVITY_NAME,cpa.status as activity_status
+        from
+        crh_card.coupon cp
+        left join (
+        select
+        a.coupon_id,
+        max(a.attribute_code) as attribute_code,
+        wm_concat(a.attribute_text) as product_name,
+        wm_concat(a.en_attribute_value) as en_attribute_values
+        from
+        (
+        select
+        cr.coupon_id,
+        cr.attribute_code,
+        cr.en_attribute_value,
+        ct.attribute_text
+        from
+        crh_card.cprule cr,crh_card.cpcrattrvalue ct
+        where cr.attribute_code = ct.attribute_code
+        and cr.en_attribute_value = ct.attribute_value and cr.EXTSYSTEM_ID = ct.EXTSYSTEM_ID order by cr.serial_no
+        ) a
+        where
+        1 = 1
+        group by
+        a.coupon_id
+        ) b
+        on cp.coupon_id = b.coupon_id
+        LEFT JOIN crh_card.cpactivity cpa
+        ON cp.ACTIVITY_ID = cpa.ACTIVITY_ID
+        where 2>1
+        <if test="start_date != null and start_date !=''">
+            <![CDATA[ and cp.create_datetime >= TO_DATE(#{start_date},'yyyy-mm-dd hh24:mi:ss')]]>
+        </if>
+        <if test="end_date != null and end_date !=''">
+            <![CDATA[ and cp.create_datetime <= TO_DATE(#{end_date},'yyyy-mm-dd hh24:mi:ss')]]>
+        </if>
+        <if test="coupon != null and coupon.coupon_id != null and coupon.coupon_id !=''">
+            and cp.coupon_id = #{coupon.coupon_id}
+        </if>
+        <if test="coupon != null and coupon.activity_id != null and coupon.activity_id !=''">
+            and cp.activity_id = #{coupon.activity_id}
+        </if>
+        <if test="coupon != null and coupon.create_by != null and coupon.create_by !=''">
+            AND instr(replace(CONCAT(CONCAT(',',#{coupon.create_by}),','),' ',''),CONCAT(CONCAT(',',cp.create_by),',')) >0
+        </if>
+        <if test="attribute_code != null and attribute_code !=''">
+            and (b.attribute_code = #{attribute_code} or b.attribute_code is null)
+        </if>
+        <if test="attribute_value != null and attribute_value !=''">
+            and  (instr(replace(CONCAT(CONCAT(',',b.en_attribute_values),','),' ',''), CONCAT(CONCAT(',',#{attribute_value}),',')) >0 or b.en_attribute_values is null)
+        </if>
+        <if test="coupon != null and coupon.coupon_status != null and coupon.coupon_status !=''">
+            and cp.coupon_status = #{coupon.coupon_status}
+        </if>
+        <if test="coupon != null and coupon.coupon_type != null and coupon.coupon_type !=''">
+            and cp.coupon_type = #{coupon.coupon_type}
+        </if>
+        <if test="coupon != null and coupon.coupon_name != null and coupon.coupon_name !=''">
+            and cp.coupon_name like  concat(concat('%',#{coupon.coupon_name}),'%')
+        </if>
+        <if test="coupon != null and coupon.extsystem_id != null and coupon.extsystem_id !=''">
+            and (cp.extsystem_id = #{coupon.extsystem_id} or replace(cp.extsystem_id,' ','') ='')
+        </if>
+        order by temp_status asc,cp.create_datetime desc
+    </select>
+
+    <select id="queryCouponByCouponId" resultMap="CouponResultMap" databaseId="mysql">
+        select <include refid="couponColumns"/>,cp.template_id,b.attribute_code,b.product_name,b.product_code ,cy.activity_name
+        from
+        crh_card.coupon cp
+        left join (
+        select
+        a.coupon_id,
+        max(a.attribute_code) as attribute_code,
+        group_concat(a.attribute_text separator ',') as product_name,
+        group_concat(a.attribute_value separator ',') as product_code
+        from
+        (
+        select
+        cr.coupon_id,
+        cr.attribute_code,
+        ct.attribute_value,
+        ct.attribute_text
+        from
+        crh_card.cprule cr,crh_card.cpcrattrvalue ct
+        where cr.attribute_code = ct.attribute_code
+        and cr.en_attribute_value = ct.attribute_value order by cr.serial_no
+        ) a
+        where
+        1 = 1
+        group by
+        a.coupon_id
+        ) b
+        on cp.coupon_id = b.coupon_id
+        left join crh_card.cpactivity cy on cp.activity_id = cy.activity_id
+        where 2>1
+        <if test="coupon_id != null and coupon_id !=''">
+            and cp.coupon_id = #{coupon_id}
+        </if>
+        order by cp.coupon_id
+    </select>
+
+    <select id="queryCouponByCouponId" resultMap="CouponResultMap" databaseId="oracle">
+        select <include refid="couponColumns"/>,cp.template_id,b.attribute_code,b.product_name,b.product_code,cy.activity_name
+        from
+        crh_card.coupon cp
+        left join (
+        select
+        a.coupon_id,
+        max(a.attribute_code) as attribute_code,
+        wm_concat(a.attribute_text) as product_name,
+        wm_concat(a.attribute_value) as product_code
+        from
+        (
+        select
+        cr.coupon_id,
+        cr.attribute_code,
+        ct.attribute_value,
+        ct.attribute_text
+        from
+        crh_card.cprule cr,crh_card.cpcrattrvalue ct
+        where cr.attribute_code = ct.attribute_code
+        and cr.en_attribute_value = ct.attribute_value order by cr.serial_no
+        ) a
+        where
+        1 = 1
+        group by
+        a.coupon_id
+        ) b
+        on cp.coupon_id = b.coupon_id
+        left join crh_card.cpactivity cy on cp.activity_id = cy.activity_id
+        where 2>1
+        <if test="coupon_id != null and coupon_id !=''">
+            and cp.coupon_id = #{coupon_id}
+        </if>
+        order by cp.coupon_id
+    </select>
+
+    <select id="qryCouponListPage" resultType="com.cairh.operation.coupons.vo.CouponVO">
+        select <include refid="couponColumns"/>
+        from
+        crh_card.coupon cp
+        where 2>1
+        <if test="coupon_statuses != null and coupon_statuses != ''">
+            AND cp.coupon_status in
+            <foreach item="item" index="index" collection="coupon_statuses.split(',')" open="(" separator="," close=")">
+                '${item}'
+            </foreach>
+        </if>
+        order by cp.create_datetime desc
+    </select>
+
+    <select id="queryCouponDetail" resultType="com.cairh.operation.coupons.vo.CouponVO" databaseId="mysql">
+        select <include refid="couponColumns"/>,
+        b.attribute_code,
+        b.product_name,
+        b.product_code,
+        cy.activity_name
+        from
+        crh_card.coupon cp
+        left join (
+        select
+        cr.coupon_id,
+        cr.attribute_code,
+        group_concat(ct.attribute_value separator ',') as product_code,
+        group_concat(ct.attribute_text separator ',') as product_name
+        from
+        crh_card.cprule cr,crh_card.cpcrattrvalue ct
+        where cr.attribute_code = ct.attribute_code
+        and cr.en_attribute_value = ct.attribute_value
+        and cr.coupon_id = #{coupon_id}
+        GROUP BY
+        cr.coupon_id,cr.attribute_code
+        ) b on cp.coupon_id = b.coupon_id
+        left join crh_card.cpactivity cy on cp.activity_id = cy.activity_id
+        where cp.coupon_id = #{coupon_id}
+    </select>
+
+    <select id="queryCouponDetail" resultType="com.cairh.operation.coupons.vo.CouponVO" databaseId="oracle">
+        SELECT <include refid="couponColumns"/>,
+        b.attribute_code,
+        b.product_name,
+        b.product_code,
+        cy.activity_name
+        FROM
+        crh_card.coupon cp
+        LEFT JOIN (
+        SELECT
+        cr.coupon_id,
+        cr.attribute_code,
+        wm_concat (ct.attribute_value) AS product_code,
+        wm_concat (ct.attribute_text) AS product_name
+        FROM
+        crh_card.cprule cr,
+        crh_card.cpcrattrvalue ct
+        WHERE
+        cr.attribute_code = ct.attribute_code
+        AND cr.en_attribute_value = ct.attribute_value
+        AND cr.coupon_id = #{coupon_id}
+        GROUP BY
+        cr.coupon_id,cr.attribute_code
+        ) b
+        on cp.coupon_id = b.coupon_id
+        LEFT JOIN crh_card.cpactivity cy on cp.activity_id = cy.activity_id
+        WHERE cp.coupon_id = #{coupon_id}
+    </select>
+
+
+    <select id="queryCpNoticeInfo" resultMap="CpNoticeResultMap" databaseId="mysql">
+        select cp.coupon_id, cp.coupon_name, cp.template_id,
+        IFNULL(#{notice_type},'') notice_type
+        from crh_card.coupon cp where cp.coupon_status = '8'
+        <if test="coupon_id != null and coupon_id !=''">
+            AND cp.coupon_id in
+            <foreach item="item" index="index" collection="coupon_id.split(',')" open="(" separator="," close=")">
+                '${item}'
+            </foreach>
+        </if>
+    </select>
+
+    <select id="queryCpNoticeInfo" resultMap="CpNoticeResultMap" databaseId="oracle">
+        select cp.coupon_id, cp.coupon_name, cp.template_id,
+        NVL(#{notice_type},'') notice_type
+        from crh_card.coupon cp where cp.coupon_status = '8'
+        <if test="coupon_id != null and coupon_id !=''">
+            AND cp.coupon_id in
+            <foreach item="item" index="index" collection="coupon_id.split(',')" open="(" separator="," close=")">
+                '${item}'
+            </foreach>
+        </if>
+    </select>
+
+    <select id="queryList" resultType="com.cairh.operation.coupons.model.Cpnoticeparam" parameterType="java.util.Map">
+        select id, cpp.template_id, notice_type, notice_channel, template_text, duration
+        FROM crh_card.cpnoticeparam cpp, crh_card.cpnoticetemplate cpt WHERE cpp.template_id = cpt.template_id
+        and cpt.status = '8'
+        and cpp.template_id=#{template_id}
+        <if test="notice_type != null and notice_type !=''">
+            and cpp.notice_type = #{notice_type}
+        </if>
+    </select>
+
+</mapper>

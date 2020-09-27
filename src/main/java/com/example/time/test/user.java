@@ -8,13 +8,11 @@ import java.util.HashMap;
  *@date 2019/11/21 0021 09:20
  */
 public class user {
-    private HashMap<String,String> user_info;
+    public static void main(String[] args) {
 
-    public HashMap<String, String> getUser_info() {
-        return user_info;
     }
 
-    public void setUser_info(HashMap<String, String> user_info) {
-        this.user_info = user_info;
-    }
+//    public int[] plusOne(int[] digits) {
+//
+//    }
 }
