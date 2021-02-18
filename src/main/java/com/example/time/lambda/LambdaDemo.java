@@ -16,8 +16,15 @@ public class LambdaDemo {
     private static Map<String, Employee> map2 = new HashMap<>();
 
     public static void main(String[] args) {
+        String[] atp = {"Rafael Nadal", "Novak Djokovic",
+                "Stanislas Wawrinka",
+                "David Ferrer","Roger Federer",
+                "Andy Murray","Tomas Berdych",
+                "Juan Martin Del Potro"};
+        List<String> players =  Arrays.asList(atp);
+        //players.forEach(System.out::println);
+        players.forEach(player -> System.out.println(player));
 
     }
-
 
 }

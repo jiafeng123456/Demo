@@ -151,7 +151,7 @@ public class SnowIdUtils {
         }
         //让上面100个线程执行结束后，在走下面输出信息
         latch.await();
-        log.info("生成20万条雪花ID总用时={}", System.currentTimeMillis() - start);
+        log.info("生成20万条雪花ID总用时={}，{}", System.currentTimeMillis() - start,map.size());
     }
 //    public static void main(String[] args) throws InterruptedException {
 //        //计时开始时间

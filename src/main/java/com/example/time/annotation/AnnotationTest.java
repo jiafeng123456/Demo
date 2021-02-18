@@ -1,5 +1,7 @@
 package com.example.time.annotation;
 
+import java.util.TreeMap;
+
 /*
  *@description:
  *@author jiafeng
@@ -8,10 +10,15 @@ package com.example.time.annotation;
 public class AnnotationTest {
 
     public static void main(String[] args) {
-
+        TreeMap<String, String> map = new TreeMap<>();
+        map.put("a","1");
+        map.put("b","2");
+        map.put("3","3");
+        testMethod();
     }
 
-    public static void testMethod(@BindView String a, String b){
-        System.out.println("运行中........");
+    public static void testMethod(){
+        @AnnotationDemo String a = null;
+        System.out.println(a);
     }
 }
